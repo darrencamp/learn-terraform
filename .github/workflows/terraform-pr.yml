@@ -1,0 +1,32 @@
+name: Terraform plan
+
+on:
+  push:
+    branches:
+      - main
+  pull-request:
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}    
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Log into Azure
+      uses: azure/login@v1
+      with:
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
+    - name: Retrieve keyvault secrets
+      uses: Azure/get-keyvault-secrets@v1
+      with: 
+        keyvault: "CodingSecrets"
+        secrets: 'learn-terraform-backend-key'
+      id: backendKey
+    - name: Checkout
+      uses: actions/checkout@v3
