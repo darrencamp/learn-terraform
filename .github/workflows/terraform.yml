@@ -1,4 +1,4 @@
-name: Terraform plan
+name: Terraform Deploy
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform Apply'
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
