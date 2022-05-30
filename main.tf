@@ -8,10 +8,10 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name = "Development"
+    resource_group_name  = "Development"
     storage_account_name = "cidevtf01"
-    container_name = "learn-terraform-tfstate"
-    key = "terraform.tfstate"
+    container_name       = "learn-terraform-tfstate"
+    key                  = "terraform.tfstate"
   }
 
   required_version = ">= 1.1.0"
@@ -25,7 +25,7 @@ resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.default_location
   tags = {
-      Purpose = "learn"
+    Purpose = "learn"
   }
 }
 

@@ -3,5 +3,5 @@ variable "resource_group_name" {
 }
 
 variable "default_location" {
-    default = "Australia Central"
+  default = "Australia Central"
 }
