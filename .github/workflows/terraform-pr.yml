@@ -39,3 +39,6 @@ jobs:
       run: terraform init
       env:
         ARM_ACCESS_KEY: ${{steps.backendKey.learn-terraform-backend-key}}
+    - name: Terraform plan
+      run: terraform plan
+      
