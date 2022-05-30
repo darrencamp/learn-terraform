@@ -30,3 +30,12 @@ jobs:
       id: backendKey
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Setup Transform
+      uses: hashicorp/setup-terraform@v1
+      with: 
+        terraform_version: latest
+    - name: Terraform init
+      id: init
+      run: terraform init
+      env:
+        ARM_ACCESS_KEY: ${{steps.backendKey.learn-terraform-backend-key}}
